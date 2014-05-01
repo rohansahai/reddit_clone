@@ -1,0 +1,41 @@
+USER
+makes and owns comments, subs, links
+can make votes
+can't do privileged actions to non-owned resources
+
+MODERATORS
+users with extra permissions
+
+LINKS
+full CRUD
+show displays all comments
+index of links lets you click through to the URL of the link
+
+COMMENTS
+full CRUD with permissions
+show comment also shows children # BEWARE OF N+1
+show comment shows link_to parent & link
+?skip comment#show?
+
+SUBS
+can make new sub (with self as mod)
+can look at subs
+can edit subs (not name, yes on other fields)
+has links and can make new
+must have title and owner
+must have many links
+basically full CRUD
+showing a sub displays all the links # USE A PARTIAL
+  vote count, clickable URL, link_to comments, voting buttons
+
+VOTES
+persist which users have voted on what links
+let users upvote and downvote
+?polymorphic to add voting on comments?
+
+
+PERMISSIONS
+table between permissible objects and users
+users can change object only if there's a relation between the
+  permissible object and the user
+permission types - don't want mods putting words in people's mouths
