@@ -22,6 +22,8 @@ describe Link do
   describe "associations" do
     it { should have_many(:subs) }
     it { should have_many(:comments) }
+    it { should have_many(:upvotes) }
+    it {  should have_many(:downvotes) }
   end
 
 

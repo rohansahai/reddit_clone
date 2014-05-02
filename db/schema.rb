@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502001343) do
+ActiveRecord::Schema.define(version: 20140502002052) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20140502001343) do
 
   add_index "subs", ["title"], name: "index_subs_on_title", unique: true
   add_index "subs", ["user_id"], name: "index_subs_on_user_id"
+
+  create_table "user_votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.boolean  "upvote"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_votes", ["link_id"], name: "index_user_votes_on_link_id"
+  add_index "user_votes", ["user_id"], name: "index_user_votes_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
