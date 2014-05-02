@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UserVote do
-  subject(:user_vote) { create(:user_vote) }
+  subject(:user_vote) { build(:user_vote) }
   let(:link) { create(:link) }
   let(:user) { create(:user) }
   let(:unsaved_vote) { build(:user_vote) }
@@ -44,8 +44,8 @@ describe UserVote do
 
   it 'forbids double votes' do
       create(:user_vote, user: user, link: link)
-      build(:user_vote, user: user, link: link)
-      should_not be_valid
+      bad_vote = build(:user_vote, user: user, link: link)
+      expect(bad_vote).to_not be_valid
   end
 
 
