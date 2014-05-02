@@ -22,10 +22,23 @@ describe Link do
   describe "associations" do
     it { should have_many(:subs) }
     it { should have_many(:comments) }
-    it { should have_many(:upvotes) }
-    it {  should have_many(:downvotes) }
   end
 
+  describe "voting" do
+    it "can be upvoted" do
+      vote1 = create(:user_vote, :upvote => true)
+      link.user_votes << vote1
+      link.save
+      expect(link.upvotes).to eq 1
+    end
+
+    it "can be downvoted" do
+      vote1 = create(:user_vote, :upvote => false)
+      link.user_votes << vote1
+      link.save
+      expect(link.downvotes).to eq 1
+    end
+  end
 
   %w(title url user).each do |el|
     it { should validate_presence_of el }

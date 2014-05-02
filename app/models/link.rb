@@ -19,5 +19,16 @@ class Link < ActiveRecord::Base
   has_many :link_subs, inverse_of: :link
   has_many :subs, through: :link_subs, inverse_of: :links
 
+  has_many :user_votes
+
+
   validates_presence_of :title, :url, :user
+
+  def upvotes
+    self.user_votes.where(:upvote => true).count
+  end
+
+  def downvotes
+    self.user_votes.where(:upvote => false).count
+  end
 end
