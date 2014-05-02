@@ -21,16 +21,11 @@ describe Sub do
     it { should have_many(:links) }
   end
 
-  # it 'has owner' do
-  #   expect(sub.user).to_not be_nil
-  # end
 
-  # it 'has many links' do
-#     expect(sub.links.size).to_not be_nil
-#   end
 
   it 'can add a link' do
     sub.links << create(:link)
+    sub.save
     expect(sub.links.size).to eq(1)
   end
 

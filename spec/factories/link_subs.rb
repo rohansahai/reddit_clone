@@ -1,12 +1,10 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: link_subs
 #
 #  id         :integer          not null, primary key
-#  body       :text
-#  user_id    :integer
 #  link_id    :integer
-#  comment_id :integer
+#  sub_id     :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
@@ -14,10 +12,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :comment do
-    body Faker::Lorem.paragraph
-    user { FactoryGirl.create(:user) }
-    link { FactoryGirl.create(:link) }
-    comment nil
+  factory :link_sub do
+    links nil
+    subs nil
   end
 end

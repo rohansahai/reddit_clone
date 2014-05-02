@@ -8,7 +8,6 @@
 #  url        :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  sub_id     :integer
 #  body       :text
 #
 

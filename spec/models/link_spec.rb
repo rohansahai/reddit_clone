@@ -8,7 +8,6 @@
 #  url        :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  sub_id     :integer
 #  body       :text
 #
 
@@ -21,7 +20,7 @@ describe Link do
   it { should be_valid } # tests factory girl base
 
   describe "associations" do
-    it { should belong_to(:sub) }
+    it { should have_many(:subs) }
     it { should have_many(:comments) }
   end
 

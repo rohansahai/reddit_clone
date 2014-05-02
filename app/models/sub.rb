@@ -16,7 +16,9 @@ class Sub < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :links
+  has_many :link_subs, inverse_of: :sub
+  has_many :links, through: :link_subs, inverse_of: :subs
+
 
   # def to_s
   #   'test'
